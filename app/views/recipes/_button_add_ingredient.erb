@@ -1,4 +1,1 @@
-<%= link_to new_recipe_food_path(recipe_id: @recipe.id),
-  class:"btn btn-primary" do %>
-  <h4 class="fs-5">Add a new ingredient</h4>
-<% end %>
+<%= link_to 'Add a new ingredient', new_recipe_food_path(recipe_id: @recipe.id), class:"btn btn-outline-dark mt-5" %>
