@@ -1,7 +1,5 @@
 <section class="container">
-  <h1 class="text-center">
-    Add a new Recipe for current user (<%= @user.name %>)
-  </h1>
+  <h1 class="text-center"> New Recipe </h1>
   <div class="p-4">
     <%= form_with model: [@recipe], method: :post do |form| %>
       <div class="form-group">
