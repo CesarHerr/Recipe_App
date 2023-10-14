@@ -17,7 +17,7 @@ class RecipeFoodsController < ApplicationController
       flash[:alert] = 'Error! Ingredient already exists on your recipe!'
       redirect_to new_recipe_food_path(recipe_id: @recipe.id)
     elsif @recipe_food.save
-      flash[:notice] = 'Recipe food created successfully'
+      flash[:notice] = 'Ingredient added successfully'
       redirect_to recipe_path(@recipe)
     else
       flash[:alert] = 'Error! Recipe food not created'

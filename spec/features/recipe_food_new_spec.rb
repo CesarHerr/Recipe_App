@@ -14,6 +14,6 @@ RSpec.describe 'New food for a especific recipe ', type: :feature do
   scenario 'User creates a new recipe' do
     fill_in 'Quantity', with: 12
     click_button 'Add Ingredient'
-    expect(page).to have_content('Recipe food created successfully')
+    expect(page).to have_content('Ingredient added successfully')
   end
 end
