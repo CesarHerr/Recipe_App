@@ -18,18 +18,18 @@ RSpec.describe 'Visit recipes index page', type: :feature do
 
   it 'Should see a list of recipes' do
     expect(page).to have_content 'Recipes'
-    expect(page).to have_content 'Name: Pasta'
-    expect(page).to have_content 'Name: Hamburguer'
+    expect(page).to have_content 'Pasta'
+    expect(page).to have_content 'Hamburguer'
   end
 
   it 'Should find a button or link to add a new recipe' do
     expect(page).to have_content 'Recipes'
-    expect(page).to have_content 'Add a new Recipe'
+    expect(page).to have_content 'New Recipe'
     expect(page).to have_selector('a')
   end
 
   it "When click on 'Add a new Recipe', should redirects to a form to add a new" do
-    click_link 'Add a new Recipe'
+    click_link 'New Recipe'
     expect(page).to have_current_path(new_recipe_path)
   end
 end

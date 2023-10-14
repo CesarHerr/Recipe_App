@@ -46,12 +46,8 @@ class RecipeFoodsController < ApplicationController
   def update
     @recipe_food = RecipeFood.find(params[:id])
     @recipe = @recipe_food.recipe
-    ingredien_exists = RecipeFood.where(recipe_id: @recipe.id, food_id: @recipe_food.food_id)
-    if ingredien_exists.present?
-      flash[:alert] = 'Error! Ingredient already exists on your recipe!'
-      redirect_to new_recipe_food_path(recipe_id: @recipe.id)
-    elsif @recipe_food.save
-      flash[:notice] = 'Recipe food created successfully'
+    if @recipe_food.save
+      flash[:notice] = 'Recipe food updated successfully'
       redirect_to recipe_path(@recipe)
     else
       flash[:alert] = 'Error! Recipe food not created'
