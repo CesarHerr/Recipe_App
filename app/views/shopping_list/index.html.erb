@@ -1,10 +1,10 @@
-<section>
+<section class="container">
 
     <h2 class="text-center">Shopping List</h2>
   
     <div class="d-flex justify-content-around my-3">
-      <h4>Amount of food items to buy: <span class="badge bg-success"><%= @recipe.recipe_foods.length %></span></h4>
-      <h4>Total value of food needed: <span class="badge bg-success"><%= @total_price %></span></h4>
+      <h4>Items to buy: <span class="badge bg-success"><%= @count_ingredients %></span></h4>
+      <h4>Total to pay: <span class="badge bg-success"><%= @total_price %></span></h4>
     </div>
   
   <table class="table table-striped table-hover border text-center">
@@ -12,18 +12,28 @@
         <tr>
           <th scope="col">Food</th>
           <th scope="col">Quantity</th>
+          <th scope="col">My stock</th>
+          <th scope="col">Need to buy</th>
           <th scope="col">Price</th>
         </tr>
       </thead>
       <tbody>
-        <% @recipe.recipe_foods.each do |r| %>
+        
+        <% @group_by_user.each do |r| %>
             <tr>
-              <th scope="row"><%= r.food.name %></th>
+              <th scope="row"><%= r.name %></th>
+              <td><%= r.total_quantity %></td>
               <td><%= r.quantity %></td>
-              <td><%= r.food.price * r.quantity %> $</td>
+                  <% if r.total_quantity - r.quantity < 0 %>
+                    <td><%= 0 %></td>
+                    <td><%= 0 %></td>
+                  <% else %>
+                    <td><%= r.total_quantity - r.quantity %></td>              
+                    <td><%= r.price * (r.total_quantity - r.quantity) %>$</td>
+                  <% end %>
             </tr>
-        <% end %>
+        <% end %>  
       </tbody>
     </table>
-  
   </section>
+  
