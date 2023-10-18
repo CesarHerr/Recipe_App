@@ -17,8 +17,8 @@ class FoodsController < ApplicationController
       flash[:success] = 'Food has been added successfully'
       redirect_to foods_path
     else
-      Rails.logger.error("Failed to create food: #{@food.errors.full_messages}")
-      render :new
+      flash[:alert] = 'Food has not been added !!!'
+      redirect_to new_food_path
     end
   end
 

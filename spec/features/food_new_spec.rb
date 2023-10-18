@@ -11,7 +11,6 @@ RSpec.describe 'Add new Food form', type: :feature do
   scenario 'User shoul create a new food' do
     fill_in 'Name', with: 'Food name'
     fill_in 'Quantity', with: '10'
-    fill_in 'Measurement unit', with: 'kg'
     fill_in 'Price', with: '10.0'
     click_button 'Create Food'
     expect(page).to have_content('Foods List')

@@ -1,41 +1,42 @@
-<section>
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2 class="my-3">Add New Food</h2>
-        <%= link_to "Back to Foods List" , foods_path, class: 'btn btn-outline-secondary' %>
+<section class="container">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="my-3">Add New Food</h2>
+    <%= link_to "Back to Foods List" , foods_path, class: 'btn
+    btn-outline-secondary' %>
+  </div>
+
+  <%= form_for @food do |form| %> 
+    <% if @food.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <% @food.errors.full_messages.each do |message| %> 
+          <%= message %> 
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :name %> 
+      <%= form.text_field :name, class: "form-control" , placeholder: "Enter the name of food" %>
     </div>
 
-    <%= form_for @food do |form| %>
-        <% if @food.errors.any? %>
-            <div class="alert alert-danger" role="alert">
-                <% @food.errors.full_messages.each do |message| %>
-                    <%= message %>
-                        <% end %>
-            </div>
-            <% end %>
+    <div class="mb-3">
+      <%= form.label :measurement_unit %> 
+      <%= form.select :measurement_unit, options_for_select([['Kilogram', 'kgs.'], ['Grams', 'grs.'], ['Liters.', 'lts.'], 
+                      ['milliliters', 'mls.'], ['Unit', 'units']], 'gr.'), { include_blank: 'Select Measurement Unit' }, class: 'form-control' %>
+    </div>
 
-                <div class="mb-3">
-                    <%= form.label :name %>
-                        <%= form.text_field :name, class: "form-control" , placeholder: "Enter the name of food" %>
-                </div>
+    <div class="mb-3">
+      <%= form.label :price %> 
+      <%= form.number_field :price, class: "form-control", placeholder: "Enter the price", step: "0.01" %>
+    </div>
 
-                <div class="mb-3">
-                    <%= form.label :measurement_unit %>
-                        <%= form.text_field :measurement_unit, class: "form-control" ,
-                            placeholder: "Enter the measurement unit" %>
-                </div>
+    <div class="mb-3">
+      <%= form.label :quantity %> 
+      <%= form.number_field :quantity, class: "form-control" , placeholder: "Enter the quantity" %>
+    </div>
 
-                <div class="mb-3">
-                    <%= form.label :price %>
-                        <%= form.number_field :price, class: "form-control" , placeholder: "Enter the price" %>
-                </div>
-
-                <div class="mb-3">
-                    <%= form.label :quantity %>
-                        <%= form.number_field :quantity, class: "form-control" , placeholder: "Enter the quantity" %>
-                </div>
-
-                <div>
-                    <%= form.submit "Create Food" , class: "btn btn-outline-dark w-25" %>
-                </div>
-                <% end %>
+    <div>
+      <%= form.submit "Create Food" , class: "btn btn-outline-dark " %>
+    </div>
+  <% end %>
 </section>

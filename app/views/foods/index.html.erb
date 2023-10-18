@@ -1,44 +1,39 @@
-<section>
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2 class="my-3">Foods List</h2>
-        <%= link_to 'Add Food' , new_food_path, class: 'btn btn-primary' %>
-    </div>
+<section class="container">
 
-    <table class="table table-striped table-hover border">
-        <thead class="bg-primary text-white">
-            <tr>
-                <th scope="col">Food</th>
-                <th scope="col">Measurement Unit</th>
-                <th scope="col">Unit Price</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="my-3">Foods List</h2>
+    <%= link_to 'Add Food' , new_food_path, class: 'btn btn-primary' %>
+  </div>
 
-        <tbody>
-            <% if @current_user.foods.length> 0 %>
-                <% @current_user.foods.each do |food| %>
-                    <tr>
-                        <td>
-                            <%= food.name %>
-                        </td>
-                        <td>
-                            <%= food.measurement_unit %>
-                        </td>
-                        <td>
-                            <%= food.price %>
-                        </td>
-                        <td>
-                            <%= button_to "Delete" , "foods/#{food.id}" , method: :delete,
-                                class: 'btn btn-danger' %>
-                        </td>
-                    </tr>
-                    <% end %>
-                        <% else %>
-                            <tr>
-                                <td colspan="4" class="text-center">There Is No Food</td>
-                            </tr>
-                            <% end %>
-        </tbody>
-    </table>
+  <table class="table table-striped table-hover border">
+    <thead class="bg-primary text-white">
+      <tr>
+        <th scope="col">Food</th>
+        <th scope="col">Unit</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Unit Price</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
 
+    <tbody>
+      <% if @current_user.foods.length> 0 %> <% @current_user.foods.each do
+      |food| %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.measurement_unit %></td>
+        <td><%= food.quantity %></td>
+        <td><%= food.price %></td>
+        <td>
+          <%= button_to "Delete" , "foods/#{food.id}" , method: :delete, class:
+          'btn btn-danger' %>
+        </td>
+      </tr>
+      <% end %> <% else %>
+      <tr>
+        <td colspan="4" class="text-center">There Is No Food</td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </section>
